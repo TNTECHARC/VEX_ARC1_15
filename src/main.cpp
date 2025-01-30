@@ -219,16 +219,11 @@ void mogg()
 }
 
 void usercontrol(void) {
-  // User control code here, inside the loop
-  LLift.setBrake(hold);
-  RLift.setBrake(hold);
-
   thread intakeThread(intaker);
   thread mogclamp(mogg);
-  thread lifttask(pidLoop);
 
-  clawState = PASSIVE;
   steak.set(false);
+  ClawMech claw(motor_group(LLift, RLift), 0.16, 0.1, 0.16, 0, 1.5, 500, 3000);
 
   bool toggleClawState = false;
   bool toggleArm = false;
