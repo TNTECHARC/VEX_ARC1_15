@@ -105,6 +105,8 @@ PORT3,     -PORT4,
 
 );
 
+ClawMech claw(motor_group(LLift, RLift), 0.16, 0.1, 0.16, 0, 1.5, 500, 3000);
+
 int current_auton_selection = 0;
 bool auto_started = false;
 
@@ -221,9 +223,9 @@ void mogg()
 void usercontrol(void) {
   thread intakeThread(intaker);
   thread mogclamp(mogg);
+  CLAWSTATES clawState = START;
 
   steak.set(false);
-  ClawMech claw(motor_group(LLift, RLift), 0.16, 0.1, 0.16, 0, 1.5, 500, 3000);
 
   bool toggleClawState = false;
   bool toggleArm = false;
