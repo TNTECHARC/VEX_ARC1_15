@@ -24,6 +24,7 @@
 #include "JAR-Template/util.h"
 #include "JAR-Template/PID.h"
 #include "autons.h"
+#include "claw.h"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
