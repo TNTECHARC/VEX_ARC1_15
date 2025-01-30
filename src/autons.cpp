@@ -163,10 +163,12 @@ void holonomic_odom_test(){
 }
 
 
+
 void red_route_match()
 {
   vex::thread([](){
     claw.moveTo(WALL)
-}).detach();
+  }).detach();
+
 }
 

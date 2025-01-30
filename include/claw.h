@@ -7,13 +7,15 @@ class ClawMech
 {
     private:
 
-        CLAWSTATES currentState;
+        CLAWSTATES currentState = STARTING;
         motor_group lift;
         float kp, ki, kd, starti, settle_error, settle_time, timeout;
 
     public:
 
-        ClawMech(motor_group lift, float kp, float ki, float kd, float starti, float settle_error, float settle_time, float timeout);
+        led grab;
+
+        ClawMech(motor_group lift, led grab, float kp, float ki, float kd, float starti, float settle_error, float settle_time, float timeout);
 
         CLAWSTATES getCurrentState();
         void setCurrentState(CLAWSTATES state);

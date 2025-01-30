@@ -143,7 +143,6 @@ void autonomous(void) {
     case 1:         
       red_route_match();
       break;
-    
  }
 }
 
@@ -234,52 +233,52 @@ void usercontrol(void) {
 
     chassis.control_arcade();
 
-    //ARM IF statements
-    if(Controller1.ButtonR1.pressing() && clawState == PASSIVE && !toggleArm)
-    {
-      clawState = INTAKE;
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && clawState == INTAKE && !toggleArm)
-    {
-      clawState = WALL;
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonX.pressing() && clawState == WALL && !toggleArm)
-    {
-      clawState = ALLIANCE;
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonX.pressing() && clawState == ALLIANCE && !toggleArm)
-    {
-      clawState = WALL;
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleArm)
-    {
-      clawState = PASSIVE;
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && toggleArm)
-    {
-      toggleArm = false;
-    }
+    // //ARM IF statements
+    // if(Controller1.ButtonR1.pressing() && clawState == PASSIVE && !toggleArm)
+    // {
+    //   clawState = INTAKE;
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && clawState == INTAKE && !toggleArm)
+    // {
+    //   clawState = WALL;
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonX.pressing() && clawState == WALL && !toggleArm)
+    // {
+    //   clawState = ALLIANCE;
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonX.pressing() && clawState == ALLIANCE && !toggleArm)
+    // {
+    //   clawState = WALL;
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleArm)
+    // {
+    //   clawState = PASSIVE;
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && toggleArm)
+    // {
+    //   toggleArm = false;
+    // }
 
-    //CLAW IF statements
-    if(Controller1.ButtonR2.pressing() && clawState == INTAKE && !toggleClawState)
-    {
-      steak.set(true);
-      toggleClawState = true;
-    }
-    else if(Controller1.ButtonR2.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleClawState)
-    {
-      steak.set(false);
-      toggleClawState = true;
-    }
-    else if(Controller1.ButtonR2.pressing() && toggleClawState)
-    {
-      toggleClawState = false;
-    }
+    // //CLAW IF statements
+    // if(Controller1.ButtonR2.pressing() && clawState == INTAKE && !toggleClawState)
+    // {
+    //   steak.set(true);
+    //   toggleClawState = true;
+    // }
+    // else if(Controller1.ButtonR2.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleClawState)
+    // {
+    //   steak.set(false);
+    //   toggleClawState = true;
+    // }
+    // else if(Controller1.ButtonR2.pressing() && toggleClawState)
+    // {
+    //   toggleClawState = false;
+    // }
 
 
     wait(20, msec); // Sleep the task for a short amount of time to
