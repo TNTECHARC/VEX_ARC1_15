@@ -11,5 +11,7 @@ class Robot
     Drive chassis;
     ClawMech claw;
 
-    Robot();
+    Robot(Drive drive, ClawMech clawMech);
 };
+
+extern Robot robot;

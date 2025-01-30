@@ -164,69 +164,18 @@ void holonomic_odom_test(){
 
 
 void red_route_match(){
-/*
-  thread autonLoop(autonpidLoop);
+  /*
+    Notes For Soren:
 
-  //intakestate = INTAKE , SECOND , THIRD , WALL , or ALLIANCE
+    In order to use chassis you now need to do robot.chassis
+    In order to use the claw lift you now need to do robot.claw
 
-  //starts with preload
-  autonClaw = WALL;
+    For robot.claw there are a few commands
 
-  //STEP ONE
-  //chassis.Gyro.setHeading(120, deg);
-  chassis.drive_distance(-8);
-
-  //Same time////////////////
-  chassis.drive_distance(-7);
-  mog.set(true);
-  //clawalliance
-  ///////////////////////////
- 
- 
-  chassis.turn_to_angle(180);
-  //intake for bottom ring
-  Rin.spin(fwd, 8, volt);
-  Lin.spin(fwd, 8, volt);
-  chassis.drive_distance(12);
-  //score on alliance stake
-  chassis.drive_distance(-12);
-
-
-  //STEP TWO
-  chassis.turn_to_angle(90);
-  //intake on (for bottom ring)
-  chassis.drive_distance(48);
-  chassis.turn_to_angle(135);
-  chassis.drive_distance(12);
-  //grabs top red ring (blue is on top of that stack) set clawthird
-  chassis.drive_distance(-10);
-  //lift claw
-  chassis.drive_distance(10);
-  //intakes bottom ring
-
-
-  //STEP THREE
-
-  chassis.drive_distance(-10);
-  chassis.turn_to_angle(0);
-  //set clawsecond
-  chassis.drive_distance(15);
-  //claw grab
-  chassis.turn_to_angle(90);
-  chassis.drive_distance(5);
-  chassis.turn_to_angle(0);
-  //maybe do it with claw not intake for the last ring
-  chassis.drive_distance(27);
-
-
-  //STEP 4
-  chassis.drive_distance(-27);
-  chassis.turn_to_angle(-65);
-  chassis.drive_distance(20);
-  autonClaw = WALL;
-  chassis.drive_distance(20);
-
-  autonLoop.interrupt();
-*/
+    robot.claw.moveTo(CLAWSTATE);
+      The CLAWSTATES that you can use are: INTAKE, SECOND, THIRD, PASSIVE, WALL, ALLIANCE\
+    robot.claw.grab.set(bool)
+      The bool can be true or false. True should be open and false should be closed
+  */
 }
 

@@ -1,7 +1,8 @@
 #include "claw.h"
 
-ClawMech::ClawMech(motor_group lift, float kp, float ki, float kd, float starti, float settle_error, float settle_time, float timeout) :
+ClawMech::ClawMech(motor_group lift, led grab, float kp, float ki, float kd, float starti, float settle_error, float settle_time, float timeout) :
     lift(lift),
+    grab(grab),
     kp(kp),
     ki(ki),
     kd(kd),
