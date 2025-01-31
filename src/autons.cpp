@@ -1,38 +1,4 @@
 #include "vex.h"
-CLAWSTATES autonClaw = INTAKE;
-
-// Thread function for PID loop
-void autonpidLoop() {
-  
-  PID clawPID(autonClaw, 2.5, 0.0, 15, 0, 1.5, 500, 3000);
-
-  while (true) {
-
-      // Get the current position (this should come from a sensor, such as an encoder)
-      double currentPosition = (LLift.position(deg) + RLift.position(deg))/2;
-
-      // Calculate error
-      double error = autonClaw - currentPosition;
-      if(error <= 5 && error >= -5)
-        error = 0;
-      double correction = clawPID.compute(error);
-
-      Brain.Screen.clearScreen();
-      Brain.Screen.setCursor(1, 1);
-      Brain.Screen.print(currentPosition);
-
-      correction = clamp(correction, -12, 12);
-
-      // Apply correction to motors
-        LLift.spin(forward, correction, voltageUnits::volt);
-        RLift.spin(forward, correction, voltageUnits::volt);
-
-      // Sleep to control loop rate
-      task::sleep(10);
-    }
-    LLift.setBrake(hold);
-    RLift.setBrake(hold);
-}
 
 /**
  * Resets the constants for auton movement.
@@ -174,6 +140,10 @@ void red_route_match()
 }
 
 void red_route_skills(){
+
+      // vex::thread([](){
+      //   claw.moveTo(INTAKE);
+      // }).detach();
 
     chassis.set_heading(300);
     chassis.drive_distance(-21);
