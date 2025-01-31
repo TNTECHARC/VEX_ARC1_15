@@ -7,7 +7,7 @@ class ClawMech
 {
     private:
 
-        CLAWSTATES currentState = STARTING;
+        CLAWSTATES currentState = START;
         motor_group lift;
         float kp, ki, kd, starti, settle_error, settle_time, timeout;
 

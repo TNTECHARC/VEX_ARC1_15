@@ -167,8 +167,9 @@ void holonomic_odom_test(){
 void red_route_match()
 {
   vex::thread([](){
-    claw.moveTo(WALL)
+    claw.moveTo(WALL);
   }).detach();
 
+  chassis.drive_distance(10);
 }
 

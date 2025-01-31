@@ -105,7 +105,7 @@ PORT3,     -PORT4,
 
 );
 
-ClawMech claw(motor_group(LLift, RLift), 0.16, 0.1, 0.16, 0, 1.5, 500, 3000);
+ClawMech claw(motor_group(LLift, RLift), steak, 0.16, 0.1, 0.16, 0, 1.5, 500, 3000);
 
 int current_auton_selection = 0;
 bool auto_started = false;
@@ -222,7 +222,6 @@ void mogg()
 void usercontrol(void) {
   thread intakeThread(intaker);
   thread mogclamp(mogg);
-  CLAWSTATES clawState = START;
 
   steak.set(false);
 
@@ -234,51 +233,47 @@ void usercontrol(void) {
     chassis.control_arcade();
 
     // //ARM IF statements
-    // if(Controller1.ButtonR1.pressing() && clawState == PASSIVE && !toggleArm)
-    // {
-    //   clawState = INTAKE;
-    //   toggleArm = true;
-    // }
-    // else if(Controller1.ButtonR1.pressing() && clawState == INTAKE && !toggleArm)
-    // {
-    //   clawState = WALL;
-    //   toggleArm = true;
-    // }
-    // else if(Controller1.ButtonX.pressing() && clawState == WALL && !toggleArm)
-    // {
-    //   clawState = ALLIANCE;
-    //   toggleArm = true;
-    // }
-    // else if(Controller1.ButtonX.pressing() && clawState == ALLIANCE && !toggleArm)
-    // {
-    //   clawState = WALL;
-    //   toggleArm = true;
-    // }
-    // else if(Controller1.ButtonR1.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleArm)
-    // {
-    //   clawState = PASSIVE;
-    //   toggleArm = true;
-    // }
-    // else if(Controller1.ButtonR1.pressing() && toggleArm)
-    // {
-    //   toggleArm = false;
-    // }
+    if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == PASSIVE && !toggleArm)
+    {
+      vex::thread([](){
+        claw.moveTo(INTAKE);
+      }).detach();
+      toggleArm = true;
+    }
+    else if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == INTAKE && !toggleArm)
+    {
+      vex::thread([](){
+        claw.moveTo(WALL);
+      }).detach();
+      toggleArm = true;
+    }
+    else if(Controller1.ButtonR1.pressing() && (claw.getCurrentState() == WALL || claw.getCurrentState() == ALLIANCE) && !toggleArm)
+    {
+      vex::thread([](){
+        claw.moveTo(PASSIVE);
+      }).detach();
+      toggleArm = true;
+    }
+    else if(Controller1.ButtonR1.pressing() && toggleArm)
+    {
+      toggleArm = false;
+    }
 
-    // //CLAW IF statements
-    // if(Controller1.ButtonR2.pressing() && clawState == INTAKE && !toggleClawState)
-    // {
-    //   steak.set(true);
-    //   toggleClawState = true;
-    // }
-    // else if(Controller1.ButtonR2.pressing() && (clawState == WALL || clawState == ALLIANCE) && !toggleClawState)
-    // {
-    //   steak.set(false);
-    //   toggleClawState = true;
-    // }
-    // else if(Controller1.ButtonR2.pressing() && toggleClawState)
-    // {
-    //   toggleClawState = false;
-    // }
+    //CLAW IF statements
+    if(Controller1.ButtonR2.pressing() && claw.getCurrentState() == INTAKE && !toggleClawState)
+    {
+      steak.set(true);
+      toggleClawState = true;
+    }
+    else if(Controller1.ButtonR2.pressing() && (claw.getCurrentState() == WALL || claw.getCurrentState() == ALLIANCE) && !toggleClawState)
+    {
+      steak.set(false);
+      toggleClawState = true;
+    }
+    else if(Controller1.ButtonR2.pressing() && toggleClawState)
+    {
+      toggleClawState = false;
+    }
 
 
     wait(20, msec); // Sleep the task for a short amount of time to

@@ -24,8 +24,9 @@ void ClawMech::setCurrentState(CLAWSTATES state)
 
 void ClawMech::moveTo(CLAWSTATES state)
 {
+    
     PID clawPID(state, kp, ki, kd, starti, settle_error, settle_time, timeout);
-
+    
     while (!clawPID.is_settled()) 
     {
         // Get the current position (this should come from a sensor, such as an encoder)
