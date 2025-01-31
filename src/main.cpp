@@ -233,31 +233,31 @@ void usercontrol(void) {
     chassis.control_arcade();
 
     // //ARM IF statements
-    if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == PASSIVE && !toggleArm)
-    {
-      vex::thread([](){
-        claw.moveTo(INTAKE);
-      }).detach();
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == INTAKE && !toggleArm)
-    {
-      vex::thread([](){
-        claw.moveTo(WALL);
-      }).detach();
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && (claw.getCurrentState() == WALL || claw.getCurrentState() == ALLIANCE) && !toggleArm)
-    {
-      vex::thread([](){
-        claw.moveTo(PASSIVE);
-      }).detach();
-      toggleArm = true;
-    }
-    else if(Controller1.ButtonR1.pressing() && toggleArm)
-    {
-      toggleArm = false;
-    }
+    // if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == PASSIVE && !toggleArm)
+    // {
+    //   vex::thread([](){
+    //     claw.moveTo(INTAKE);
+    //   }).detach();
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && claw.getCurrentState() == INTAKE && !toggleArm)
+    // {
+    //   vex::thread([](){
+    //     claw.moveTo(WALL);
+    //   }).detach();
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && (claw.getCurrentState() == WALL || claw.getCurrentState() == ALLIANCE) && !toggleArm)
+    // {
+    //   vex::thread([](){
+    //     claw.moveTo(PASSIVE);
+    //   }).detach();
+    //   toggleArm = true;
+    // }
+    // else if(Controller1.ButtonR1.pressing() && toggleArm)
+    // {
+    //   toggleArm = false;
+    // }
 
     //CLAW IF statements
     if(Controller1.ButtonR2.pressing() && claw.getCurrentState() == INTAKE && !toggleClawState)
