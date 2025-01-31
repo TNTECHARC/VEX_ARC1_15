@@ -11,3 +11,4 @@ void default_constants();
 
 
 void red_route_match();
+void red_route_skills();
