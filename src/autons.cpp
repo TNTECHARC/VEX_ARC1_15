@@ -129,6 +129,21 @@ void holonomic_odom_test(){
 }
 
 
+CLAWSTATES autonState = START;
+
+void autonMoveClaw()
+{
+  
+  CLAWSTATES temp = autonState;
+  while(true)
+  {
+    claw.moveTo(autonState);
+
+    temp = autonState;
+    waitUntil(temp != autonState);
+  }
+}
+
 
 void red_route_match()
 {
@@ -139,39 +154,53 @@ void red_route_match()
 
 void red_route_skills(){
 
-      // vex::thread([](){
-      //   claw.moveTo(INTAKE);
-      // }).detach();
 
+  // steak.set(true);
+  // wait(.5, sec);
+  
+  // //set claw to alliance
+  // autonState = ALLIANCE;
     
 
 
 
       
 
-
+    //1
     chassis.set_heading(305);
     chassis.drive_distance(-21);
-    //clamp
+    steak.set(true);
+    //2
     chassis.turn_to_angle(245);    
     chassis.drive_distance(11);
-    //spin intake
+    intakeOn = true;
+    intakeOn = false;
+    //3
     chassis.turn_to_angle(228);
     chassis.drive_distance(21);
-    //spin intake
+    intakeOn = true;
+    intakeOn = false;
 
-
+    //4
     chassis.turn_to_angle(44);
     chassis.drive_distance(44);
-    //spin intake
+    intakeOn = true;
+    intakeOn = false;
+
+    //5
     chassis.turn_to_angle(47);
     chassis.drive_distance(28);
-    //spin intake
+    intakeOn = true;
+    intakeOn = false;
+    //6
     chassis.turn_to_angle(20);
     chassis.drive_distance(-11);
+    //7
     chassis.turn_to_angle(47);
     chassis.drive_distance(13);
-    //spin intake
+    intakeOn = true;
+    intakeOn = false;
+    //8
     chassis.drive_distance(-74);
     //clamp release
     chassis.turn_to_angle(63);
