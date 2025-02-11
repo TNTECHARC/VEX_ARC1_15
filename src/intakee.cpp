@@ -27,11 +27,11 @@ void intakeePID() {
 
     // Calculate PID output
     double output = (kP * error) + (kI * integral) + (kD * derivative);
-    intake.spin(fwd, output, voltageUnits::volt);
+    intake.spin(forward, output, voltageUnits::volt);
 }
 
 
-double oneRot = 2310.18;
+double oneRot = 2339.74;
 void intakee()
 {
   while(1)
@@ -39,8 +39,8 @@ void intakee()
     
     if(intakeOn)
     {
-      intake.spin(fwd,100,pct);
-      wait(300,msec);
+      intake.spin(reverse,100,pct);
+      wait(300,msec);thread intakethread = thread(intakee);
       waitUntil(intakeOn == false);
       intake.stop();
       intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);

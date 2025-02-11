@@ -161,19 +161,22 @@ void red_route_skills(){
   // //set claw to alliance
   // autonState = ALLIANCE;
     
+  thread intakethread = thread(intakee);
+  thread autonMoveClawthread = thread(autonMoveClaw);
 
 
-
-      
-
+    intakeOn = false;
+    autonState = SECOND;
+    
     //1
     chassis.set_heading(305);
-    chassis.drive_distance(-21);
-    steak.set(true);
+    chassis.drive_distance(-15);
+    mog.set(true);
     //2
     chassis.turn_to_angle(245);    
-    chassis.drive_distance(11);
+    chassis.drive_distance(13);
     intakeOn = true;
+    wait(300, msec);
     intakeOn = false;
     //3
     chassis.turn_to_angle(228);
@@ -202,14 +205,18 @@ void red_route_skills(){
     intakeOn = false;
     //8
     chassis.drive_distance(-74);
-    //clamp release
+    mog.set(false);
+    //9
     chassis.turn_to_angle(63);
     chassis.drive_distance(48);
+    //10
     chassis.turn_to_angle(266);
     chassis.drive_distance(-27);
-    // chassis.turn_to_angle(232);
-    // chassis.drive_distance(6);
-    //clamp
+    //11
+    chassis.turn_to_angle(232);
+    //12
+    chassis.drive_distance(6);
+    steak.set(true);
 
 
     //STEP TWO
