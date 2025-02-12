@@ -39,8 +39,8 @@ void intakee()
     
     if(intakeOn)
     {
-      intake.spin(reverse,100,pct);
-      wait(300,msec);thread intakethread = thread(intakee);
+      intake.spin(fwd,100,pct);
+      wait(300,msec);//thread intakethread = thread(intakee);
       waitUntil(intakeOn == false);
       intake.stop();
       intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);

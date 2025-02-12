@@ -210,6 +210,8 @@ void usercontrol(void) {
     Brain.Screen.clearLine();
     Brain.Screen.setCursor(1,1);
     Brain.Screen.print(inrot.position(deg));
+    Brain.Screen.newLine();
+    Brain.Screen.print(intake.position(deg));
 
 
     wait(20, msec); // Sleep the task for a short amount of time to
