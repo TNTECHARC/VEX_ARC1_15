@@ -20,6 +20,7 @@ extern motor Lin;
 extern motor Rin;
 extern motor_group intake;
 extern led mog;
+extern rotation inrot;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

@@ -8,6 +8,7 @@
  * exit conditions, check the docs.
  */
 
+
 void default_constants(){
   // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
   chassis.set_drive_constants(10, 1.5, 0, 10, 0);
@@ -96,7 +97,7 @@ void odom_test(){
     Brain.Screen.printAt(5,60, "Heading: %f", chassis.get_absolute_heading());
     Brain.Screen.printAt(5,80, "ForwardTracker: %f", chassis.get_ForwardTracker_position());
     Brain.Screen.printAt(5,100, "SidewaysTracker: %f", chassis.get_SidewaysTracker_position());
-    task::sleep(20);
+    //vex::task::sleep(20);
   }
 }
 
@@ -139,101 +140,87 @@ void red_route_match()
 
 void red_route_skills(){
 
-      // vex::thread([](){
-      //   claw.moveTo(INTAKE);
-      // }).detach();
 
-    
+    inrot.setPosition(0,deg);
+    thread intak(intakee);
 
-
+    claw.moveTo(PASSIVE);
 
       
+    wait(100,sec);
+
+//     chassis.set_heading(305);
+//     chassis.drive_distance(-21);
+//     //clamp
+//     chassis.turn_to_angle(245);    
+//     chassis.drive_distance(11);
+//     //spin intake
+//     chassis.turn_to_angle(228);
+//     chassis.drive_distance(21);
+//     //spin intake
 
 
-    chassis.set_heading(305);
-    chassis.drive_distance(-21);
-    //clamp
-    chassis.turn_to_angle(245);    
-    chassis.drive_distance(11);
-    //spin intake
-    chassis.turn_to_angle(228);
-    chassis.drive_distance(21);
-    //spin intake
+//     chassis.turn_to_angle(44);
+//     chassis.drive_distance(44);
+//     //spin intake
+//     chassis.turn_to_angle(47);
+//     chassis.drive_distance(28);
+//     //spin intake
+//     chassis.turn_to_angle(20);
+//     chassis.drive_distance(-11);
+//     chassis.turn_to_angle(47);
+//     chassis.drive_distance(13);
+//     //spin intake
+//     chassis.drive_distance(-74);
+//     //clamp release
+//     chassis.turn_to_angle(63);
+//     chassis.drive_distance(48);
+//     chassis.turn_to_angle(266);
+//     chassis.drive_distance(-27);
+//     // chassis.turn_to_angle(232);
+//     // chassis.drive_distance(6);
+//     //clamp
 
 
-    chassis.turn_to_angle(44);
-    chassis.drive_distance(44);
-    //spin intake
-    chassis.turn_to_angle(47);
-    chassis.drive_distance(28);
-    //spin intake
-    chassis.turn_to_angle(20);
-    chassis.drive_distance(-11);
-    chassis.turn_to_angle(47);
-    chassis.drive_distance(13);
-    //spin intake
-    chassis.drive_distance(-74);
-    //clamp release
-    chassis.turn_to_angle(63);
-    chassis.drive_distance(48);
-    chassis.turn_to_angle(266);
-    chassis.drive_distance(-27);
-    // chassis.turn_to_angle(232);
-    // chassis.drive_distance(6);
-    //clamp
+//     //STEP TWO
 
+//     //set claw to intake
+//     chassis.turn_to_angle(223);
+//     chassis.drive_distance(12);
+//     //claw grab
+//     //set claw to wall
+//     chassis.turn_to_angle(223);
+//     chassis.drive_distance(7);
+//     chassis.turn_to_angle(180);
+//     chassis.drive_distance(4);
+//     //spin intake
+//     chassis.drive_distance(6);
+//     //score wall
+//     chassis.turn_to_angle(60);
+//     chassis.drive_distance(21);
+//     //intake
+//     chassis.turn_to_angle(48);
+//     chassis.drive_distance(32);
+//     //intake
+//     chassis.turn_to_angle(164);
+//     chassis.drive_distance(11);
+//     //intake
+//     chassis.turn_to_angle(143);
+//     chassis.drive_distance(25);
 
-    //STEP TWO
+//     //STEP THREE
 
-    //set claw to intake
-    chassis.turn_to_angle(223);
-    chassis.drive_distance(12);
-    //claw grab
-    //set claw to wall
-    chassis.turn_to_angle(223);
-    chassis.drive_distance(7);
-    chassis.turn_to_angle(180);
-    chassis.drive_distance(4);
-    //spin intake
-    chassis.drive_distance(6);
-    //score wall
-    chassis.turn_to_angle(60);
-    chassis.drive_distance(21);
-    //intake
-    chassis.turn_to_angle(48);
-    chassis.drive_distance(32);
-    //intake
-    chassis.turn_to_angle(164);
-    chassis.drive_distance(11);
-    //intake
-    chassis.turn_to_angle(143);
-    chassis.drive_distance(25);
-
-    //STEP THREE
-
-    chassis.turn_to_angle(358);
-    chassis.drive_distance(52);
-    //claw grab
-    //claw alliance
-    chassis.turn_to_angle(0);
-    chassis.drive_distance(8);
-    chassis.turn_to_angle(90);
-    //score
-    chassis.drive_distance(-12);
-    //clamp
-    chassis.turn_to_angle(0);
-    chassis.drive_distance(16);
-    //spin intake
-
-
-
-
-
-
-
-
-
-
-
-
-}
+//     chassis.turn_to_angle(358);
+//     chassis.drive_distance(52);
+//     //claw grab
+//     //claw alliance
+//     chassis.turn_to_angle(0);
+//     chassis.drive_distance(8);
+//     chassis.turn_to_angle(90);
+//     //score
+//     chassis.drive_distance(-12);
+//     //clamp
+//     chassis.turn_to_angle(0);
+//     chassis.drive_distance(16);
+//     //spin intake
+ }

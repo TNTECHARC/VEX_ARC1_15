@@ -122,6 +122,7 @@ void pre_auton() {
   vexcodeInit();
   default_constants();
   chassis.Gyro.calibrate();
+  inrot.setPosition(0,deg);
   waitUntil(!chassis.Gyro.isCalibrating());
 
   
@@ -161,7 +162,8 @@ bool canStopSpin = true;
 void goToAlliance(){canStopSpin = false; claw.moveTo(ALLIANCE); canStopSpin = true;}
 
 void goToDefault(){if(!Controller1.ButtonR1.pressing()){canStopSpin = false; claw.moveTo(PASSIVE); canStopSpin = true;}}
-void spinIntake(){if(!Controller1.ButtonR1.pressing()){intake.spinFor(fwd, (78  /12 * 16 / 24) * 388, deg, 100, velocityUnits::pct);}}
+//void spinIntake(){if(!Controller1.ButtonR1.pressing()){intake.spinFor(fwd, (78  /12 * 16 / 24) * 388, deg, 100, velocityUnits::pct);}}
+void spinIntake(){if(!Controller1.ButtonL1.pressing()){intakeOn = false;}else{intakeOn=true;}}
 
 void goalClamp(){if(Controller1.ButtonL1.pressing() && Controller1.ButtonR1.pressing()) {mog.set(!mog.value()); if(mog.value()) Controller1.rumble("-");}}
 
@@ -171,10 +173,10 @@ void revIntake(){intake.spinFor(fwd, (78  /12 * 16 / 24) * 388, deg, 100, veloci
 
 void usercontrol(void) {
   claw.moveTo(PASSIVE);
-
+  thread intakeThread = thread(intakee);
   // L Controls
   Controller1.ButtonL1.pressed(goToDefault);
-  Controller1.ButtonL1.pressed(spinIntake);
+  //Controller1.ButtonL1.pressed(spinIntake);
   Controller1.ButtonL2.pressed(clampRing);
 
   // Goal Clamp
@@ -200,6 +202,14 @@ void usercontrol(void) {
       Lift.spin(reverse, 12, volt);
     else if(canStopSpin)
       Lift.stop(hold);
+
+
+    spinIntake();
+
+
+    Brain.Screen.clearLine();
+    Brain.Screen.setCursor(1,1);
+    Brain.Screen.print(inrot.position(deg));
 
 
     wait(20, msec); // Sleep the task for a short amount of time to
