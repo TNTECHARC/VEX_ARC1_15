@@ -1,11 +1,14 @@
 #include "intakee.h"
 
+
+
 double intakeTarget = 0;
 bool intakeOn = false;
 
-double kPP = 0.08;  // Proportional gain
-double kII = 0.0; // Integral gain
-double kDD = 0.1; // Derivative gain
+
+double kP = 0.08;  // Proportional gain
+double kI = 0.0; // Integral gain
+double kD = 0.1; // Derivative gain
 
 // Variables for PID control
 double error = 0;
@@ -23,23 +26,29 @@ void intakeePID() {
     previousError = error;
 
     // Calculate PID output
-    double output = (kPP * error) + (kII * integral) + (kDD * derivative);
-    intake.spin(fwd, output, voltageUnits::volt);
+    double output = (kP * error) + (kI * integral) + (kD * derivative);
+    intake.spin(forward, output, voltageUnits::volt);
 }
 
-double oneRot =  2339.74;
-void intakee() {
-    while(1) {
-        if(intakeOn) {
-            intake.spin(fwd,100,pct);
-            wait(300,msec);
-            waitUntil(intakeOn == false);
-            intake.stop();
-            intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);
-        } else {
-            intakeePID();
-        }
-        wait(10,msec);
+
+double oneRot = 2339.74;
+void intakee()
+{
+  while(1)
+  {
+    
+    if(intakeOn)
+    {
+      intake.spin(reverse,100,pct);
+      wait(300,msec);thread intakethread = thread(intakee);
+      waitUntil(intakeOn == false);
+      intake.stop();
+      intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);
     }
+    else
+      intakeePID();
+
+
+    wait(10,msec);
+  }
 }
- 
