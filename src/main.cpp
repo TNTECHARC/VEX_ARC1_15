@@ -136,15 +136,9 @@ void pre_auton() {
  */
 
 void autonomous(void) {
-  // auto_started = true;
-  // switch(current_auton_selection){ 
-  //   case 0:
-      red_route_skills();
-//       break;
-//     case 1:         
-//       red_route_match();
-//       break;
-//  }
+
+  red_route_skills();
+
 }
 
 /*---------------------------------------------------------------------------*/

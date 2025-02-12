@@ -40,7 +40,7 @@ void intakee()
     if(intakeOn)
     {
       intake.spin(fwd,100,pct);
-      wait(300,msec);//thread intakethread = thread(intakee);
+      wait(300,msec);
       waitUntil(intakeOn == false);
       intake.stop();
       intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);

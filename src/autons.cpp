@@ -147,53 +147,58 @@ void autonMoveClaw()
 
 void red_route_match()
 {
-  // vex::thread([](){
-  //   claw.moveTo(WALL);
-  // }).detach();
+
 }
 
 void red_route_skills(){
 
 
-  // steak.set(true);
-  // wait(.5, sec);
-  
-  // //set claw to alliance
-  // autonState = ALLIANCE;
+
     
   thread intakethread = thread(intakee);
   thread autonMoveClawthread = thread(autonMoveClaw);
 
 
     intakeOn = false;
-    autonState = SECOND;
+    autonState = INTAKE;
+
+
     
     //1
     chassis.set_heading(305);
-    chassis.drive_distance(-15);
+    chassis.drive_distance(-26);
     mog.set(true);
+    chassis.drive_distance(5);
     //2
-    chassis.turn_to_angle(245);    
+    chassis.turn_to_angle(245);
     chassis.drive_distance(13);
     intakeOn = true;
     wait(300, msec);
     intakeOn = false;
+    // wait(600, msec);
+    // intakeOn = true;
+    // wait(300, msec);
+    // intakeOn = false;
     //3
     chassis.turn_to_angle(228);
-    chassis.drive_distance(21);
+    chassis.drive_distance(22);
     intakeOn = true;
+    wait(300, msec);
     intakeOn = false;
+    chassis.drive_distance(-5);
 
     //4
-    chassis.turn_to_angle(44);
+    chassis.turn_to_angle(39);
     chassis.drive_distance(44);
     intakeOn = true;
+    wait(300, msec);
     intakeOn = false;
 
     //5
     chassis.turn_to_angle(47);
     chassis.drive_distance(28);
     intakeOn = true;
+    wait(300, msec);
     intakeOn = false;
     //6
     chassis.turn_to_angle(20);
@@ -202,6 +207,7 @@ void red_route_skills(){
     chassis.turn_to_angle(47);
     chassis.drive_distance(13);
     intakeOn = true;
+    wait(300, msec);
     intakeOn = false;
     //8
     chassis.drive_distance(-74);
