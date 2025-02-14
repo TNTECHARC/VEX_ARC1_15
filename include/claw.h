@@ -1,7 +1,7 @@
 #pragma once
 #include "vex.h"
-//24 inch passive = 125
-enum CLAWSTATES {START = 0, INTAKE = 70, SECOND = 110, THIRD = 159, PASSIVE = 91, WALL = 647, ALLIANCE = 475, SHOVE = 80};
+enum CLAWSTATES {START = 0, INTAKE = 70, SECOND = 110, THIRD = 174, PASSIVE = 89, WALL = 647, ALLIANCE = 469, DONTPLS = 490, NEG = -5};
+
 
 class ClawMech
 {
@@ -12,6 +12,8 @@ class ClawMech
         float kp, ki, kd, starti, settle_error, settle_time, timeout;
 
     public:
+
+        float maxVoltage = 12;
 
         led grab;
 

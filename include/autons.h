@@ -10,5 +10,6 @@ extern ClawMech claw;
 void default_constants();
 
 
-void red_route_match();
+void blueRightElim();
+void blueRightWP();
 void red_route_skills();
