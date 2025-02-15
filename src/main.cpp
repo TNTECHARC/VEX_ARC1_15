@@ -143,7 +143,9 @@ void autonomous(void) {
   //red_route_skills();
 
   //BlueRightElim();
-  blueRightWP();
+  //blueRightWP();
+  //blueLeftElim();
+  //blueLeftWP();
   
 
 }
