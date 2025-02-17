@@ -142,10 +142,11 @@ void autonomous(void) {
 
   //red_route_skills();
 
-  //BlueRightElim();
+  //blueRightElim();
   //blueRightWP();
-  //blueLeftElim();
+  blueLeftElim();
   //blueLeftWP();
+  //red_route_skills_Sec();
   
 
 }
@@ -170,7 +171,7 @@ void spinIntake(){if(!Controller1.ButtonL1.pressing()){intakeOn = false;}else{in
 
 void goalClamp(){if(Controller1.ButtonL1.pressing() && Controller1.ButtonR1.pressing()) {mog.set(!mog.value()); if(mog.value()) Controller1.rumble("-");}}
 
-void clampRing(){if(!Controller1.ButtonR1.pressing()) steak.set(!steak.value());}
+void clampRing(){if(!Controller1.ButtonR1.pressing() || !Controller1.ButtonR2.pressing()) steak.set(!steak.value());}
 
 void revIntake(){intake.spinFor(fwd, (78  /12 * 16 / 24) * 388, deg, 100, velocityUnits::pct);}
 
@@ -194,6 +195,8 @@ void usercontrol(void) {
 
 
   steak.set(false);
+  doinker.set(false);
+  bool toggleDoinker = false;
 
   while (1) {
 
@@ -206,6 +209,10 @@ void usercontrol(void) {
     else if(canStopSpin)
       Lift.stop(hold);
 
+    if(Controller1.ButtonL2.pressing() && Controller1.ButtonR2.pressing())
+      doinker.set(true);
+    else
+      doinker.set(false);
 
     spinIntake();
 

@@ -454,7 +454,6 @@ void blueLeftElim()
 
 void blueRightWP()
 {
-
   thread intakethread = thread(intakee);
   thread autonMoveClawthread = thread(autonMoveClaw);
  // thread rushh = thread(rushh);
@@ -563,10 +562,10 @@ void blueRightWP()
   chassis.turn_to_angle(-114);
   mog.set(false);
   chassis.drive_distance(20);
-  chassis.turn_to_angle(-114+177);
+  chassis.turn_to_angle(63);
   autonState = NEG;
   chassis.drive_distance(-18);
-  chassis.drive_distance(-20,-114+177,4,8);
+  chassis.drive_distance(-20,63,4,8);
   mog.set(true);
 
   // Go to ladder
@@ -575,20 +574,20 @@ void blueRightWP()
   // wait(1, sec);
   // chassis.drive_distance(46);
 
-  chassis.turn_to_angle(-114+175+45);
+  chassis.turn_to_angle(106);
   chassis.drive_distance(11);
   steak.set(true);
   wait(300,msec);
   autonState = ALLIANCE;
   chassis.drive_distance(-5);
-  chassis.turn_to_angle(-114+175+45+18);
+  chassis.turn_to_angle(124);
   chassis.drive_distance(9.5);
   steak.set(false);
   wait(100,msec);
   autonState = DONTPLS;
   chassis.drive_distance(-10);
      //utonState = PASSIVE; //get ring ending also
-  chassis.turn_to_angle(-18);
+  chassis.turn_to_angle(18);
 
   //get ring part
   chassis.drive_with_voltage(5,5);
@@ -746,6 +745,227 @@ void blueLeftWP()
 
 
 
+
+void red_route_skills_Sec(){
+
+
+  wait(15, sec);
+    
+  thread intakethread = thread(intakee);
+  thread autonMoveClawthread = thread(autonMoveClaw);
+
+
+    intakeOn = false;
+    autonState = INTAKE;
+
+
+    
+    //1
+    chassis.set_heading(360-305);
+    chassis.drive_distance(-23);
+    chassis.drive_distance(-5, 360-305, 3, 12);
+    mog.set(true);
+    wait(500, msec);
+    chassis.drive_distance(7);
+    //2
+    chassis.turn_to_angle(360-245);
+    chassis.drive_distance(13);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+    //3
+    chassis.turn_to_angle(360-228);
+    chassis.drive_distance(15);
+    chassis.drive_distance(6, 360-228, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    chassis.drive_distance(-5);
+    autonState = INTAKE;
+
+    //4
+    chassis.turn_to_angle(360-47);
+    chassis.drive_distance(35);
+    chassis.drive_distance(5, 360-44, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    chassis.drive_distance(4);
+
+    //5
+    chassis.turn_to_angle(360-46);
+    chassis.drive_distance(18);
+    chassis.drive_distance(12, 360-43, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    //6   
+    //7
+    autonState = INTAKE;
+    chassis.drive_distance(17, 360-40, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    wait(500, msec);
+    chassis.drive_distance(-17);
+    //chassis.turn_to_angle(47);
+    //8
+    chassis.drive_distance(-77);
+    mog.set(false);
+    //9
+    chassis.turn_to_angle(360-63);
+    chassis.drive_distance(45);
+    //10
+    chassis.turn_to_angle(360-266);
+    chassis.drive_distance(-27);
+    //11
+    chassis.turn_to_angle(360-232);
+    //12
+    chassis.drive_distance(-20, 360-232, 3, 12);
+    mog.set(true);
+    wait(500, msec);
+
+
+    //STEP TWO
+
+
+    //1
+    //autonState = START;
+    chassis.turn_to_angle(360-223);
+    chassis.drive_distance(12);
+    //2
+    chassis.drive_distance(23, 360-235, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+    //3
+    chassis.turn_to_angle(180);
+    //autonState = START;
+    chassis.drive_distance(7, 180, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    //4
+    chassis.drive_distance(-15);
+    chassis.turn_to_angle(360-72);
+    chassis.drive_distance(40);
+    chassis.drive_distance(10, 360-72, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+    //5
+    chassis.turn_to_angle(180);
+    chassis.drive_distance(14);
+    chassis.drive_distance(10, 180, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+    chassis.drive_distance(15);
+    chassis.drive_distance(-15);
+    
+    //6
+    chassis.turn_to_angle(360-270);
+    chassis.drive_distance(20);
+    chassis.drive_distance(14);
+    chassis.drive_distance(10, 180, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+    //7
+    chassis.turn_to_angle(260-112);
+    chassis.drive_distance(70);
+    chassis.drive_distance(15, 360-112, 3, 12);
+    chassis.drive_distance(14);
+    chassis.drive_distance(10, 180, 3, 12);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+    //8
+    chassis.turn_to_angle(360-348);
+    mog.set(false);
+    chassis.drive_distance(20);
+
+
+
+
+
+
+
+
+
+    // autonState = SECOND;
+    // //5
+    // chassis.turn_to_angle(90);
+    // chassis.drive_distance(10);
+    // chassis.drive_distance(5, 90, 3, 12);
+    // steak.set(true);
+    // chassis.drive_distance(8, 90, 3, 12);
+    // intakeOn = true;
+    // wait(300, msec);
+    // intakeOn = false;
+    // chassis.turn_to_angle(270);
+    // steak.set(false);
+    // chassis.turn_to_angle(270);
+    // //6
+    // chassis.turn_to_angle(48);
+    // chassis.drive_distance(18);
+    // chassis.drive_distance(4, 48, 3, 12);
+    // steak.set(true);
+    // chassis.drive_distance(8, 48, 3, 12);
+    // intakeOn = true;
+    // wait(300, msec);
+    // intakeOn = false;
+    // chassis.turn_to_angle(270);
+    // steak.set(false);
+    // chassis.turn_to_angle(48);
+    // //7
+    // chassis.turn_to_angle(173);
+    // chassis.drive_distance(14, 173, 3, 12);
+    // intakeOn = true;
+    // wait(300, msec);
+    // intakeOn = false;
+    // //8
+    // chassis.drive_distance(8);
+    // chassis.turn_to_angle(143);
+    // chassis.drive_distance(20);
+    // intakeOn = true;
+    // wait(300, msec);
+    // intakeOn = false;
+
+    //STEP THREE
+
+    chassis.turn_to_angle(360-358);
+    mog.set(false);
+    chassis.drive_distance(52);
+    autonState = START;
+    steak.set(true);
+    wait(500, msec);
+    autonState = WALL;
+    chassis.turn_to_angle(0);
+    chassis.drive_distance(8);
+    chassis.turn_to_angle(360-90);
+    steak.set(false);
+    chassis.drive_distance(-12);
+    mog.set(true);
+    chassis.turn_to_angle(0);
+    chassis.drive_distance(16);
+    intakeOn = true;
+    wait(300, msec);
+    intakeOn = false;
+
+
+
+
+
+
+
+
+}
 
 void red_route_skills(){
 
@@ -962,8 +1182,5 @@ void red_route_skills(){
 
 
 
-
-
-
-
 }
+

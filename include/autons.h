@@ -15,3 +15,4 @@ void blueRightElim();
 void blueRightWP();
 
 void red_route_skills();
+void red_route_skills_Sec();
