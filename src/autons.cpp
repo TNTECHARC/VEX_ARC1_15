@@ -1184,3 +1184,43 @@ void red_route_skills(){
 
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////NEW ROUTES//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void red_right_front_pos(){
+
+          
+  thread intakethread = thread(intakee);
+  thread autonMoveClawthread = thread(autonMoveClaw);
+
+
+    intakeOn = false;
+    autonState = INTAKE;
+    
+    //done to pick which route is used
+    chassis.set_heading(90);
+    chassis.drive_distance(18);
+    //use vision sensor to pick route
+
+    chassis.drive_distance(22);
+    chassis.turn_to_angle(138);
+    chassis.drive_distance(14);
+    //doinker down
+    chassis.turn_to_angle(146);
+    chassis.drive_distance(-19);
+    //doinker up
+    chassis.turn_to_angle(326);
+    chassis.drive_distance(-5);
+    //back clamp
+    chassis.drive_distance(5);
+    chassis.turn_to_angle(182);
+    chassis.drive_distance(14);
+    //intake top ring
+    //STEP 6
+
+
+}
+
