@@ -1220,6 +1220,29 @@ void red_right_front_pos(){
     chassis.drive_distance(14);
     //intake top ring
     //STEP 6
+    chassis.turn_to_angle(143);
+    chassis.drive_distance(17);
+    //doinker down
+    chassis.drive_distance(-9);
+    //doinker up
+    chassis.turn_to_angle(120);
+    //intake ring
+    chassis.drive_distance(8);
+    chassis.turn_to_angle(304);
+    chassis.drive_distance(57);
+    chassis.turn_to_angle(0);
+    //STEP 11
+    chassis.drive_distance(10);
+    //intake bottom ring
+    chassis.turn_to_angle(164);
+    chassis.drive_distance(33);
+    //intake bottom ring 
+    chassis.drive_distance(7);
+    chassis.turn_to_angle(220);
+    chassis.drive_distance(18);
+    //PUT CODE TO EMPTY BOTTOM AND THIRD RINGS ONTO GOAL / CLEAR GOAL / AND BUT GOAL INTO CORRNER
+
+
 
 
 }
