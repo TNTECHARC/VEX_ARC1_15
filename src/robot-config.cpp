@@ -30,6 +30,9 @@ rotation inrot = rotation(PORT5,false);
 led rush = led(Brain.ThreeWirePort.H);
 led doinker = led(Brain.ThreeWirePort.D);
 
+aivision::colordesc Goal = aivision::colordesc(1, 147, 197, 83, 40, 1);
+aivision ai = aivision(PORT17, Goal);
+
 // VEXcode generated functions
 // define variable for remote controller enable/disable
 bool RemoteControlCodeEnabled = true;
