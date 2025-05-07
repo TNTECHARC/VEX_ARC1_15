@@ -141,9 +141,10 @@ void pre_auton() {
 
 void autonomous(void) {
 
-  //red_route_skills();
+  
   chassis.drive_distance(24);
-  wait(3, sec);
+  wait(2, sec);
+  red_right_front_pos();
 
   if(team_red)
   {

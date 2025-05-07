@@ -23,9 +23,9 @@ int find_Local_Goals_In_My_Area()
     }
     
     if(leftGoalNumber >= 1 && rightGoalNumber == 0)
-        return 1; // Middle Goal
+        return 1; // Left Goal
     else if(leftGoalNumber == 0 && rightGoalNumber >= 1)
-        return 2; // Right Goal
+        return 2; // Middle Goal
     else if(leftGoalNumber >= 1 && rightGoalNumber >= 1)
         return 3; // Both Goals
     else

@@ -968,9 +968,7 @@ void red_right_front_pos(){
     
     //done to pick which route is used
     chassis.set_heading(90);
-    chassis.drive_distance(24);
-    //use vision sensor to pick route
-
+   
     //doinker.set(true);
     //wait(700, msec);
     chassis.drive_distance(22);
@@ -981,11 +979,11 @@ void red_right_front_pos(){
     //doinker down
     doinker.set(true);
     chassis.turn_to_angle(146);
-    chassis.drive_distance(-24, 146, 6, 6); //previously -19
+    chassis.drive_distance(-30, 146, 6, 6); //previously -24
     //doinker up
     doinker.set(false);
     chassis.turn_to_angle(315); //last 326
-    chassis.drive_distance(-20, 315, 4, 4);//last -15
+    chassis.drive_distance(-23, 315, 4, 4);//last -15, 20 works ish
     //back clamp
     mog.set(true);
     wait(500, msec);
@@ -993,60 +991,60 @@ void red_right_front_pos(){
     //Above is working
 
 
-    chassis.drive_distance(17, 326, 6, 6);
-    chassis.turn_to_angle(182);
+    chassis.drive_distance(18, 326, 6, 6); //24
+    chassis.turn_to_angle(180);//182
     //intake top ring
-    autonState = SECOND;
-    chassis.drive_distance(17); //previosly 14(too low)
+    
+    chassis.drive_distance(26, 182, 6, 6); //previosly 23(too low)
+    
+    wait(300, msec);
     steak.set(true);
     wait(300, msec);
-    chassis.drive_distance(-15);
-    autonState = INTAKE;
-    steak.set(false);
+    chassis.drive_distance(-7);
     autonState = SECOND;
-    wait(1000, msec);
+    chassis.drive_distance(7);
+    wait(500, msec);
+  
     intakeOn = true;
-    chassis.drive_distance(10);
+    chassis.drive_distance(8, 182, 3, 3);
+    wait(300, msec);
     intakeOn = false;
+
+    //newstuff
+    //chassis.drive_distance(6,182,6,6); // 18 is slightly to high
+    steak.set(false);
+    chassis.turn_to_angle(110);
+    autonState = BOTTOM;
+    chassis.drive_distance(16); //18 too high 14 to low
+
+    //fixed above
+
+
+    //replace with doinker to get rings off
+    //ring stack on line
+    chassis.drive_distance(4,110,3,3);
+    steak.set(true);
+    wait(700, msec);
+    chassis.turn_to_angle(290);
+    steak.set(false);
+    intakeOn = true;
+    chassis.drive_distance(15);
+    intakeOn = false;
+    chassis.drive_distance(15);
+    //intake back ring stack
+
+    chassis.drive_distance(15);
+    //take match load sat to the side of robot
+    chassis.drive_distance(-15);
+    chassis.turn_to_angle(225);
+    chassis.drive_distance(16);
+
     
 
-    //STEP 6
-
-    chassis.drive_distance(24); //12 is too low
-    autonState = INTAKE;
-    chassis.turn_to_angle(90);
-    chassis.drive_distance(17, 90, 6, 6);
-
-    //GRABING THE BOTTOM RING ON LINE STACK 
-    //intake already set to push off top and grab bottom ring
-    steak.set(true);
-    chassis.drive_distance(-10);
-   
-   
-    //chassis.turn_to_angle(160);
-    //intake ring
-    steak.set(false);
-    autonState = SECOND;
-    intakeOn = true;
-    chassis.drive_distance(5);
-    wait(300, msec);
-    intakeOn = false;
-    chassis.turn_to_angle(160);
-    chassis.drive_distance(-10);
-    chassis.turn_to_angle(304);
-    chassis.drive_distance(57);
-    chassis.turn_to_angle(0);
+      
 
 
-    //STEP 11
-    chassis.drive_distance(10);
-    //intake bottom ring
-    chassis.turn_to_angle(164);
-    chassis.drive_distance(33);
-    //intake bottom ring 
-    chassis.drive_distance(7);
-    chassis.turn_to_angle(220);
-    chassis.drive_distance(18);
+
     //PUT CODE TO EMPTY BOTTOM AND THIRD RINGS ONTO GOAL / CLEAR GOAL / AND BUT GOAL INTO CORRNER
 
 
@@ -1068,31 +1066,17 @@ void red_right_middle_pos(){
   
   }
 
-void blue_right_back_pos(){
+
+
+void red_left_front_neg(){};
+void red_left_middle_neg(){};
+
+void blue_right_front_pos(){};
+void blue_right_middle_pos(){};
+void blue_right_back_pos(){};
 
 
 
-}
 
-
-void blue_left_front_neg(){
-
-
-
-}
-
-
-void blue_left_middle_neg(){
-
-
-
-}
-
-
-void blue_left_back_neg(){
-
-
-
-}
 
 
