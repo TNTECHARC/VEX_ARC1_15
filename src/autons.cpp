@@ -1188,6 +1188,21 @@ void red_route_skills(){
 /////////////////////////////////////////////////////////////////////////////////////NEW ROUTES//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/// NOTES
+///
+///doinker: doinker.set(true/false)
+///
+///back clamp: mog.set(true/false)
+///
+///Wait: wait(500, msec)
+///
+///Intake: intakeOn = true/false
+///
+///lift height: autonState = START/INTAKE/SECOND/THIRD/PASSIVE/WALL/ALLIANCE
+///
+///Lift clamp: steak.set(true/false)
+///
+///
 
 
 void red_right_front_pos(){
@@ -1202,35 +1217,76 @@ void red_right_front_pos(){
     
     //done to pick which route is used
     chassis.set_heading(90);
-    chassis.drive_distance(18);
+    chassis.drive_distance(24);
     //use vision sensor to pick route
 
+    //doinker.set(true);
+    //wait(700, msec);
     chassis.drive_distance(22);
-    chassis.turn_to_angle(138);
+
+    //doinker.set(false);
+    chassis.turn_to_angle(140);
     chassis.drive_distance(14);
     //doinker down
+    doinker.set(true);
     chassis.turn_to_angle(146);
-    chassis.drive_distance(-19);
+    chassis.drive_distance(-24, 146, 6, 6); //previously -19
     //doinker up
-    chassis.turn_to_angle(326);
-    chassis.drive_distance(-5);
+    doinker.set(false);
+    chassis.turn_to_angle(315); //last 326
+    chassis.drive_distance(-20, 315, 4, 4);//last -15
     //back clamp
-    chassis.drive_distance(5);
+    mog.set(true);
+    wait(500, msec);
+
+    //Above is working
+
+
+    chassis.drive_distance(17, 326, 6, 6);
     chassis.turn_to_angle(182);
-    chassis.drive_distance(14);
     //intake top ring
+    autonState = SECOND;
+    chassis.drive_distance(17); //previosly 14(too low)
+    steak.set(true);
+    wait(300, msec);
+    chassis.drive_distance(-15);
+    autonState = INTAKE;
+    steak.set(false);
+    autonState = SECOND;
+    wait(1000, msec);
+    intakeOn = true;
+    chassis.drive_distance(10);
+    intakeOn = false;
+    
+
     //STEP 6
-    chassis.turn_to_angle(143);
-    chassis.drive_distance(17);
-    //doinker down
-    chassis.drive_distance(-9);
-    //doinker up
-    chassis.turn_to_angle(120);
+
+    chassis.drive_distance(24); //12 is too low
+    autonState = INTAKE;
+    chassis.turn_to_angle(90);
+    chassis.drive_distance(17, 90, 6, 6);
+
+    //GRABING THE BOTTOM RING ON LINE STACK 
+    //intake already set to push off top and grab bottom ring
+    steak.set(true);
+    chassis.drive_distance(-10);
+   
+   
+    //chassis.turn_to_angle(160);
     //intake ring
-    chassis.drive_distance(8);
+    steak.set(false);
+    autonState = SECOND;
+    intakeOn = true;
+    chassis.drive_distance(5);
+    wait(300, msec);
+    intakeOn = false;
+    chassis.turn_to_angle(160);
+    chassis.drive_distance(-10);
     chassis.turn_to_angle(304);
     chassis.drive_distance(57);
     chassis.turn_to_angle(0);
+
+
     //STEP 11
     chassis.drive_distance(10);
     //intake bottom ring
@@ -1246,4 +1302,46 @@ void red_right_front_pos(){
 
 
 }
+
+
+
+void red_right_middle_pos(){
+  
+  intakeOn = false;
+  autonState = INTAKE;
+  
+  // Start heading set to match photo's right-side orientation
+  chassis.set_heading(90);
+  
+  
+  
+  }
+
+void blue_right_back_pos(){
+
+
+
+}
+
+
+void blue_left_front_neg(){
+
+
+
+}
+
+
+void blue_left_middle_neg(){
+
+
+
+}
+
+
+void blue_left_back_neg(){
+
+
+
+}
+
 

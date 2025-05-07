@@ -140,13 +140,7 @@ void pre_auton() {
 
 void autonomous(void) {
 
-  //red_route_skills();
-
-  //blueRightElim();
-  //blueRightWP();
-  blueLeftElim();
-  //blueLeftWP();
-  //red_route_skills_Sec();
+red_right_front_pos();
   
 
 }
