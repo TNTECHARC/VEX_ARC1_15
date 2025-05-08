@@ -106,7 +106,7 @@ PORT3,     -PORT4,
 );
 
 ClawMech claw(motor_group(LLift, RLift), steak, 0.16, 0.1, 0.16, 0, 5, 100, 300);
-
+Goal_AI AI;
 int current_auton_selection = 0;
 bool auto_started = false;
 bool team_red = true; //true for red, false for blue
@@ -149,35 +149,40 @@ void autonomous(void) {
   if(team_red)
   {
     //Red Team Auton
-    switch (find_Local_Goals_In_My_Area()) {
+    switch (AI.find_Local_Goals_In_My_Area()) {
       case 0:
         // No Goals
+        red_left_back_neg();
         break;
       case 1:
         // Only Left Goal
+        red_left_front_neg();
         break;
       case 2:
         // Only Right Goal
-        red_right_front_pos();
-        
+        red_left_middle_neg();
         break;
       case 3:
         // Both Goals
+
         break;
     }
   }
   else
   {
     //Blue Team Auton
-    switch (find_Local_Goals_In_My_Area()) {
+    switch (AI.find_Local_Goals_In_My_Area()) {
       case 0:
         // No Goals
+        blue_left_back_pos();
         break;
       case 1:
         // Only Left Goal
+        blue_left_front_pos();
         break;
       case 2:
         // Only Right Goal
+        blue_left_middle_pos();
         break;
       case 3:
         // Both Goals
