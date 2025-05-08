@@ -321,6 +321,7 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
     drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
     task::sleep(10);
   }
+  drive_with_voltage(0, 0);
 }
 
 /**

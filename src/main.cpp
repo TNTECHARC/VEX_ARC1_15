@@ -144,7 +144,7 @@ void autonomous(void) {
   
   chassis.drive_distance(24);
   wait(2, sec);
-  red_right_front_pos();
+  
 
   if(team_red)
   {
@@ -157,7 +157,8 @@ void autonomous(void) {
         // Only Left Goal
         break;
       case 2:
-        // Only Middle Goal
+        // Only Right Goal
+        red_right_front_pos();
         
         break;
       case 3:
@@ -176,7 +177,7 @@ void autonomous(void) {
         // Only Left Goal
         break;
       case 2:
-        // Only Middle Goal
+        // Only Right Goal
         break;
       case 3:
         // Both Goals

@@ -26,7 +26,7 @@ motor Lin = motor(PORT8, ratio6_1, true);
 motor Rin = motor(PORT3, ratio6_1, false);
 motor_group intake = motor_group(Lin, Rin);
 led mog = led(Brain.ThreeWirePort.A);
-rotation inrot = rotation(PORT5,false);
+rotation inrot = rotation(PORT5,true);
 led rush = led(Brain.ThreeWirePort.H);
 led doinker = led(Brain.ThreeWirePort.D);
 
