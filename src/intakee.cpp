@@ -27,23 +27,36 @@ void intakeePID() {
 
     // Calculate PID output
     double output = (kP * error) + (kI * integral) + (kD * derivative);
-    intake.spin(forward, output, voltageUnits::volt);
+    intake.spin(fwd, output, voltageUnits::volt);
 }
 
 
-double oneRot = 2339.74;
+double oneRot = 2310.18;
 void intakee()
 {
+  bool stuck = false;
   while(1)
   {
     
     if(intakeOn)
     {
-      intake.spin(fwd,100,pct);
+      intake.spin(fwd,90,pct); // Change back to 100 for 24 in
       wait(300,msec);
-      waitUntil(intakeOn == false);
+      do 
+      {              
+        /*if(intake.power(powerUnits::watt) == 0)
+        {
+          stuck = !stuck;
+          intakeOn = false;
+        }*/
+        wait(39, msec);                                                             
+      } while (!(intakeOn == false));
+      //waitUntil(intakeOn == false);
       intake.stop();
-      intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);
+      if(!stuck)
+        intakeTarget = ((((int)(inrot.position(deg) / oneRot))+1)*oneRot);
+      else
+        intakeTarget = (((int)(inrot.position(deg) / oneRot))*oneRot);
     }
     else
       intakeePID();
