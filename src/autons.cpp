@@ -320,7 +320,7 @@ void blue_left_back_pos()
     chassis.right_swing_to_angle(290);
     doinker.set(false);
     chassis.turn_to_angle(45);
-    chassis.drive_distance(-13);
+    chassis.drive_distance(-20);//13 to low
     mog.set(false);
     wait(300, msec);
     chassis.drive_distance(10);
