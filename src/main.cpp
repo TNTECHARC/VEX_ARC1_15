@@ -109,7 +109,7 @@ ClawMech claw(motor_group(LLift, RLift), steak, 0.16, 0.1, 0.16, 0, 5, 100, 300)
 Goal_AI AI;
 int current_auton_selection = 0;
 bool auto_started = false;
-bool team_red = true; //true for red, false for blue
+bool team_red = false; //true for red, false for blue
 
 /**
  * Function before autonomous. It prints the current auton number on the screen
